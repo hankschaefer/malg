@@ -30,6 +30,7 @@ class GroupsController < ApplicationController
         @group = Group.find(params[:id])
         @group.users.delete(current_user)
         current_user.group = nil
+        current_user.update_attribute(:group_id, nil)
         redirect_to root_path
     end
 
@@ -53,6 +54,7 @@ class GroupsController < ApplicationController
     def destroy
         @group = Group.find(params[:id])
         @group.destroy
+        current_user.group = nil
         current_user.update_attribute(:group_id, nil)
     
         redirect_to root_path
