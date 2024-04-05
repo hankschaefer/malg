@@ -1,0 +1,13 @@
+    <div class = "d-flex flex-column mx-auto">
+        <div class="post p-4">
+            <div class = "mx-auto d-flex flex-column w-75 border border-dark rounded p-3">
+                <%= image_tag(@post.picture.url, :class => "img-fluid")%> 
+                <div class = "d-flex justify-content-between mt-3 mx-1">
+                    <h5 style="font-size: 2.2vw;"> Uploaded by <%= @post.user.email %> </h5>
+                    <% if @post.user_id == current_user.id %>
+                        <%= button_to 'Delete', user_post_path(current_user, @post), method: :delete, :class => "btn btn-dark"%>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>

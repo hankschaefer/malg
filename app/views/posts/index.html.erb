@@ -1,0 +1,20 @@
+<% if current_user.group != nil %>
+  <h3 class = "mt-3"> Photos from <b> <%= current_user.group.name %> </b> </h4>
+    <hr>
+    <div class = "d-flex flex-column mx-auto">
+        <% (@posts).each do |post| %>
+            <div class = "mx-auto d-flex flex-column w-75 border border-dark rounded p-3 text-center">
+                <%= link_to image_tag(post.picture.url, :class => "img-fluid"), user_post_path(current_user, post) %>  
+                <div class = "d-flex justify-content-between mt-3 mx-1">
+                    <h5 style="font-size: 2.2vw;"> Uploaded by <%= post.user.email %> </h5>
+                    <% if post.user_id == current_user.id %>
+                        <%= button_to 'Delete', user_post_path(current_user, post), method: :delete, :class => "btn btn-dark"%>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+<% else %>
+    <h4 class = "mt-3"> You aren't in a group yet ... </h4>
+    <h4> Join or create a group to see some photos! </h4>
+<% end %>

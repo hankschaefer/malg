@@ -1,0 +1,15 @@
+<%# Check if user logged in. %>
+<h3 class = "mt-3"> Create Group </h3>
+<hr>
+  <%= form_with model: @group do |form| %>
+      <%= label_tag(:name, "Group Name") %>
+      <br>
+      <%= form.text_field :name %>
+      <br>
+      <%= label_tag(:password, "Password") %>
+      <br>
+      <%= form.password_field :password %>
+      <br>
+      <%= submit_tag "CREATE", :class => "mt-3 btn btn-success"%>
+  <% end %>
+  <br>

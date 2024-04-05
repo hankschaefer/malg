@@ -1,0 +1,16 @@
+<% if user_signed_in? %>
+    <h3 class = "m-3"> Hello, <%= current_user.email %> </h3>
+    <h4 class = "m-3"> MALG is a work in progress. </h4>
+    <h4 class = "m-3"> How to use: </h4>
+    <h5>
+        <ul>
+            <li>Create a group.</li>
+            <li>Share it with your friends.</li>
+            <li>Post photos to your shared gallery.</li>
+        </ul>
+    </h5>
+<% else %>
+    <h3 class = "m-3"> Sign in or create an account to continue! </h3>
+    <%= button_to "Sign in", new_user_session_path, method: :post, :class => "btn btn-primary mt-3"%> 
+    <%= button_to "Sign up", new_user_registration_path, method: :get, :class => "btn btn-success mt-3"%> 
+<% end %>
