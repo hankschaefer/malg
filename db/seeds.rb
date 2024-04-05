@@ -8,13 +8,3 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-
-User.destory_all
-Group.destory_all
-Post.destory_all
-
-user1 = User.create!(
-    email: "example@gmail.com"
-    password: "password"
-    password_confirmation: "password"
-)
