@@ -16,6 +16,7 @@ class GroupsController < ApplicationController
     def join 
         @group = Group.find(params[:id])
         if (group_params[:password] == @group.password) 
+            current_user.update_attribute(:group_id, @group.id)
             @group.users << current_user
             current_user.group = @group
             redirect_to root_path
