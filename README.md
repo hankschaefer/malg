@@ -1,24 +1,9 @@
-# README
+# malg
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Malg is a work-in-progress project. 
 
-Things you may want to cover:
+Users can upload photos to shared user galleries.
 
-* Ruby version
+Created with Ruby on Rails and Bootstrap.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+>>>>>>> 61f3867f3134fd54fa058129a9f196739e263a6c
