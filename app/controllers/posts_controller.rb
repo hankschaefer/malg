@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
     def index
-        if (current_user.group_id != nil)
+        if current_user.group_id != nil
             @group = Group.find_by(id: current_user.group_id)
             @posts = Group.find_by(id: current_user.group_id).posts
         else
+            @group = nil
             @posts = nil
         end
     end
