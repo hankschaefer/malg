@@ -7,7 +7,7 @@
                 <%= image_tag(post.picture.url, :class => "img-fluid") %>  
                 <div class = "d-flex justify-content-between mt-3 mx-1">
                     <%# <h5 style="font-size: 2.2vw;"> Uploaded by <%= post.user.email %>
-                    <% if post.group_id == current_user.group_id %>
+                    <% if post.user_id == current_user.id %>
                         <%= button_to 'Delete', group_post_path(current_user.group_id, post), method: :delete, :class => "btn btn-dark"%>
                     <% end %>
                 </div>

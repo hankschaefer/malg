@@ -21,6 +21,7 @@ class PostsController < ApplicationController
     def create
         @group = Group.find(post_params[:group_id])
         @post = @group.posts.create(post_params)
+        @post.user_id = current_user.id
         redirect_to group_posts_path
     end
 
