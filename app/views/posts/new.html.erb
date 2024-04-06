@@ -1,8 +1,9 @@
 <h3 class = "mt-3"> New Post </h3>
 <hr>
-  <%= form_with model: [ current_user, current_user.posts.build ] do |form| %>
+  <%= form_with model: [ @group, @group.posts.build ] do |form| %>
       <h5> <%= label_tag(:picture, "Upload a picture") %> </h5>
       <h5><%= form.file_field :picture%></h5>
       <%= form.number_field :user_id, id: :post_user_id, value: current_user.id, type: :hidden%>
+      <%= form.hidden_field :group_id, value: current_user.group_id %>
       <%= submit_tag "Post", :class => "btn btn-success mt-3" %>
   <% end %>

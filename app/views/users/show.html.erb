@@ -2,7 +2,7 @@
   <h3 class = "mt-3"> User Information </h3>
   <hr>
   <% if current_user.group_id != nil %>
-    <h5> Group Name:<b> <%= current_user.group.name %> </b> </h4>
+    <h5> Group Name:<b> <%= @current_group.name %> </b> </h4>
   <% else %>
     <h5> You aren't in a group yet! </h5>
   <% end %>

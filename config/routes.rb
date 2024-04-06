@@ -4,13 +4,12 @@ Rails.application.routes.draw do
     post "join", on: :member
     get "home", on: :member
     delete "leave", on: :member
-  end
-
-  devise_for :users
-
-  resources :users do
     resources :posts
   end
+  
+  devise_for :users
+  resources :users
+  
   
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
   

@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :posts, dependent: :destroy
+  has_many :posts
   has_one :group
   accepts_nested_attributes_for :posts
 

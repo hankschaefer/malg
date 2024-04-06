@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
     def index
-        if (current_user.group != nil)
-            @posts = current_user.group.posts
+        if (current_user.group_id != nil)
+            @group = Group.find_by(id: current_user.group_id)
+            @posts = Group.find_by(id: current_user.group_id).posts
         else
             @posts = nil
         end
@@ -13,21 +14,22 @@ class PostsController < ApplicationController
 
     def new
         @post = Post.new
+        @group = Group.find(current_user.group_id)
     end
 
     def create
-        @user = current_user
-        @post = @user.posts.create(post_params)
-        redirect_to user_post_path(current_user, @post)
+        @group = Group.find(post_params[:group_id])
+        @post = @group.posts.create(post_params)
+        redirect_to group_posts_path
     end
 
     def destroy
         @post = Post.find(params[:id])
         @post.destroy
-        redirect_to user_posts_path, status: :see_other
+        redirect_to group_posts_path, status: :see_other
       end
 
     def post_params
-        params.require(:post).permit(:title, :picture, :user_id)
+        params.require(:post).permit(:title, :picture, :user_id, :group_id)
     end
 end

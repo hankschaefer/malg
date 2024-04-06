@@ -3,7 +3,7 @@
         <%= "Group " + @group.name %>
         <hr>
     </h3>
-    <% if current_user.group == nil %>
+    <% if current_user.group_id == nil %>
         <%= form_with model: @group, url: join_group_path(@group), method: :join do |form| %>
             <%= label_tag(:password, "Password") %>
             <br>

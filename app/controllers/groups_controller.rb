@@ -2,6 +2,11 @@ class GroupsController < ApplicationController
     skip_forgery_protection
 
     def home
+        if (current_user.group_id != nil)
+            @current_group = Group.find_by(id: current_user.group_id)
+        else 
+            @current_group = nil
+        end
     end
     
     def new
@@ -18,7 +23,6 @@ class GroupsController < ApplicationController
         if (group_params[:password] == @group.password) 
             current_user.update_attribute(:group_id, @group.id)
             @group.users << current_user
-            current_user.group = @group
             redirect_to root_path
         else
             flash[:notice] = "Wrong password!"
@@ -29,7 +33,6 @@ class GroupsController < ApplicationController
     def leave
         @group = Group.find(params[:id])
         @group.users.delete(current_user)
-        current_user.group = nil
         current_user.update_attribute(:group_id, nil)
         redirect_to root_path
     end
@@ -54,11 +57,9 @@ class GroupsController < ApplicationController
     def destroy
         @group = Group.find(params[:id])
         @group.destroy
-        current_user.group = nil
         current_user.update_attribute(:group_id, nil)
     
         redirect_to root_path
-
         # @user = User.find(params[:user_id])
         # @group = @user.group.find(params[:id])
         # @group.destroy
