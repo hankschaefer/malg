@@ -11,6 +11,7 @@ class PostsController < ApplicationController
 
     def show
         @post = Post.find params[:id]
+        @post_user = User.find(@post.user_id)
     end
 
     def new
